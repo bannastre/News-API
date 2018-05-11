@@ -13,4 +13,9 @@ module.exports.run = app => {
         language: 'en',
         country: 'us'
     }).then(response => res.json(response)))
+
+    app.get('/financial-headlines', (req, res) => newsapi.v2.topHeadlines({
+        sources: 'bloomberg, reuters, financial-times',
+        language: 'en'
+    }).then(response => res.json(response.articles)))
 }
